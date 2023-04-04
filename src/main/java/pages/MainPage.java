@@ -1,8 +1,10 @@
 package pages;
-
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import static com.codeborne.selenide.Selenide.page;
 
 public class MainPage {
     public final static String MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
@@ -23,5 +25,55 @@ public class MainPage {
     @FindBy(how = How.XPATH, using = ".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")
     private SelenideElement ingredientBtnAfterClick;
 
+    public LoginPage clickPersonalAccountBtn() {
+        personalAccountBtn.scrollIntoView(true);
+        personalAccountBtn.click();
+        return page(LoginPage.class);
+    }
 
+    public AccountPage clickConstructorBtn() {
+        constructorBtn.scrollIntoView(true);
+        constructorBtn.click();
+        return page(AccountPage.class);
+    }
+
+    public AccountPage clickLogoBtn() {
+        logoBtn.scrollIntoView(true);
+        logoBtn.click();
+        return page(AccountPage.class);
+    }
+
+    public LoginPage clickLogInToYourAccountBtn() {
+        loginInToYourAccountBtn.scrollIntoView(true);
+        loginInToYourAccountBtn.click();
+        return page(LoginPage.class);
+    }
+
+    public MainPage clickBunBtn() {
+        bunsBtn.scrollIntoView(true);
+        bunsBtn.click();
+        return this;
+    }
+
+    public MainPage clickSaucesBtn() {
+        saucesBtn.scrollIntoView(true);
+        saucesBtn.click();
+        return this;
+    }
+
+    public MainPage clickFillingBtn() {
+        fillingsBtn.scrollIntoView(true);
+        fillingsBtn.click();
+        return this;
+    }
+
+    public boolean isBunsBtnDisplayed() {
+        bunsBtn.scrollIntoView(true);
+        bunsBtn.shouldBe(Condition.exist);
+        return bunsBtn.isDisplayed();
+    }
+
+    public boolean isIngredientsCorrect(String title) {
+        return ingredientBtnAfterClick.getText().contentEquals(title);
+    }
 }
