@@ -1,5 +1,6 @@
 import jdk.jfr.Description;
 import org.junit.Test;
+
 import static org.junit.Assert.assertTrue;
 
 public class ConstructorTest extends BaseTest {
@@ -10,6 +11,7 @@ public class ConstructorTest extends BaseTest {
                 .isIngredientsCorrect("Булки");
         assertTrue("Ошибка отображения булок", isGetBunsCorrect);
     }
+
     @Test
     @Description("проверить отображение заголовка после нажатия кнопки - соусы")
     public void checkSauces() {

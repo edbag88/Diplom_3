@@ -1,9 +1,11 @@
 package pages;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import models.User;
+
 import static com.codeborne.selenide.Selenide.page;
 
 public class RegistrationPage {
@@ -19,6 +21,7 @@ public class RegistrationPage {
     private SelenideElement loginBtn;
     @FindBy(how = How.XPATH, using = ".//p[@class='input__error text_type_main-default']")
     private SelenideElement passwordHasInvalidLength;
+
     public void setName(String name) {
         nameInput.setValue(name).pressEnter();
     }
@@ -36,6 +39,7 @@ public class RegistrationPage {
         signupSubmit.click();
         return page(LoginPage.class);
     }
+
     public LoginPage signup(User user) {
         setName(user.getName());
         setEmail(user.getEmail());
@@ -43,6 +47,7 @@ public class RegistrationPage {
         clickSignupSubmit();
         return page(LoginPage.class);
     }
+
     public RegistrationPage signupWithError(User user) {
         setName(user.getName());
         setEmail(user.getEmail());
@@ -50,12 +55,14 @@ public class RegistrationPage {
         clickSignupSubmit();
         return this;
     }
+
     public boolean isPasswordErrorCorrect() {
         passwordHasInvalidLength.scrollIntoView(true);
         passwordHasInvalidLength.shouldBe(Condition.visible);
         passwordHasInvalidLength.isDisplayed();
         return passwordHasInvalidLength.getText().equals("Некорректный пароль");
     }
+
     public LoginPage clickLoginBtn() {
         loginBtn.scrollIntoView(true);
         loginBtn.click();

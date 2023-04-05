@@ -1,5 +1,7 @@
 package clients;
+
 import models.User;
+
 public class UserClient extends RestAssuredClient {
     private final String AUTH = "/auth";
     private final String CREATE_USER = AUTH + "/register";
@@ -21,5 +23,4 @@ public class UserClient extends RestAssuredClient {
                 .when()
                 .delete(USER);
     }
-
 }

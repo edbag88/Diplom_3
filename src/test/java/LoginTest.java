@@ -4,6 +4,7 @@ import models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
@@ -17,12 +18,14 @@ public class LoginTest extends BaseTest {
         user = User.getRandom();
         accessToken = userClient.createUser(user);
     }
+
     @After
     public void deleteUser() {
         if (accessToken != null) {
             userClient.deleteUser(accessToken);
         }
     }
+
     @Test
     @Description("вход по кнопке «Войти в аккаунт» на главной")
     public void successfulLoginViaLoginToAccountButton() {
@@ -32,6 +35,7 @@ public class LoginTest extends BaseTest {
                 .isUrlCorrectAfterLogin();
         assertTrue("Аутентификация через кнопку 'Войти в аккаунт' пользователя завершилась ошибкой", isLoginCompletedViaLogInToAccount);
     }
+
     @Test
     @Description("вход через кнопку «Личный кабинет»")
     public void successfulLoginViaPersonalAccountButton() {
@@ -41,6 +45,7 @@ public class LoginTest extends BaseTest {
                 .isUrlCorrectAfterLogin();
         assertTrue("Аутентификация через личный кабинет пользователя завершилась ошибкой", isLoginCompletedViaPersonalAccount);
     }
+
     @Test
     @Description("вход через кнопку в форме регистрации")
     public void successfulLoginViaSignUpPageButton() {
@@ -52,6 +57,7 @@ public class LoginTest extends BaseTest {
                 .isUrlCorrectAfterLogin();
         assertTrue("Аутентификация со страницы регистрации пользователя завершилась ошибкой", isLoginCompletedViaSignPage);
     }
+
     @Test
     @Description("вход через кнопку в форме восстановления пароля")
     public void successfulLoginViaRecoverPasswordPageButton() {

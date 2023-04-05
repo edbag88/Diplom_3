@@ -4,24 +4,28 @@ import models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertTrue;
 
-public class TransitionToConstructorTest extends BaseTest{
+public class TransitionToConstructorTest extends BaseTest {
     User user;
     UserClient userClient;
     String accessToken;
+
     @Before
     public void setUp() {
         userClient = new UserClient();
         user = User.getRandom();
         accessToken = userClient.createUser(user);
     }
+
     @After
     public void deleteUser() {
         if (accessToken != null) {
             userClient.deleteUser(accessToken);
         }
     }
+
     @Test
     @Description("Проверка перехода из личного кабинета в конструктор")
     public void successTransitionToConstructorFromAccountPageViaConstructorBtn() {

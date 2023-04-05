@@ -4,11 +4,13 @@ import models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.Locale;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class PersonalAccountPage extends BaseTest{
+public class PersonalAccountPage extends BaseTest {
     User user;
     UserClient userClient;
     String accessToken;
@@ -19,12 +21,14 @@ public class PersonalAccountPage extends BaseTest{
         user = User.getRandom();
         accessToken = userClient.createUser(user);
     }
+
     @After
     public void deleteUser() {
         if (accessToken != null) {
             userClient.deleteUser(accessToken);
         }
     }
+
     @Test
     @Description("Проверка перехода по клику на Личный кабинет.")
     public void successfulLoginViaLoginToAccountButton() {
